@@ -1,10 +1,12 @@
 package com.arka99.Springmvcdemo.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -19,7 +21,12 @@ public class FormController {
     public String processForm(HttpSession session, @RequestParam String username, @RequestParam String useremail) {
         session.setAttribute("name",username);
         session.setAttribute("email",useremail);
+        String theName = username.toUpperCase();
+        theName = "Hello " + theName;
+        session.setAttribute("hello",theName);
         return "viewdata";
 
     }
+
+
 }
